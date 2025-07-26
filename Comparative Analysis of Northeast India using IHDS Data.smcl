@@ -1,0 +1,2281 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}E:\PRESI '25\SEC SEM 4\PG\F 1.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 1 May 2024, 20:45:05
+
+{com}. **TEAM F: NORTHEAST INDIA
+
+. 
+. **Members: Spandan Dutta, Sanway Sen, Aryaa Banerjee, Soumyadeep Ghosh, Ritimoy Debnath
+
+. 
+. 
+. 
+. **Assignment A
+
+. 
+. ** STATEID: 11,12,13,14,15,16,17,18
+
+. recode GROUPS6 (2=1) (3=2) (4=3) (5=4) (6=5) (7=6), gen(rcaste)
+{txt}(39996 differences between GROUPS6 and rcaste)
+
+{com}. 
+. label define rcaste 1"Hindu Forward Caste" 2"Hindu OBC" 3"Hindu SC" 4"Hindu ST" 5"Muslims" 6"Others"
+
+. 
+. label value rcaste rcaste
+
+. 
+. tab rcaste
+
+  {txt}RECODE of GROUPS6 {c |}
+       (HQ3 1.13-15 {c |}
+     Caste/religion {c |}
+             6cats) {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+Hindu Forward Caste {c |}{res}      8,630       21.58       21.58
+{txt}          Hindu OBC {c |}{res}     13,619       34.05       55.63
+{txt}           Hindu SC {c |}{res}      8,583       21.46       77.09
+{txt}           Hindu ST {c |}{res}      3,461        8.65       85.74
+{txt}            Muslims {c |}{res}      4,561       11.40       97.14
+{txt}             Others {c |}{res}      1,142        2.86      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}     39,996      100.00
+
+{com}. **Q1A
+
+. 
+. tabulate rcaste if STATEID== 11|STATEID== 12|STATEID== 13|STATEID== 14|STATEID== 15|STATEID== 16|STATEID== 17|STATEID== 18
+
+  {txt}RECODE of GROUPS6 {c |}
+       (HQ3 1.13-15 {c |}
+     Caste/religion {c |}
+             6cats) {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+Hindu Forward Caste {c |}{res}        356       23.27       23.27
+{txt}          Hindu OBC {c |}{res}        232       15.16       38.43
+{txt}           Hindu SC {c |}{res}        168       10.98       49.41
+{txt}           Hindu ST {c |}{res}        502       32.81       82.22
+{txt}            Muslims {c |}{res}        268       17.52       99.74
+{txt}             Others {c |}{res}          4        0.26      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}      1,530      100.00
+
+{com}. 
+. 
+. 
+. **QA2
+
+. 
+. tab rcaste if (STATEID== 11|STATEID== 12|STATEID== 13|STATEID== 14|STATEID== 15|STATEID== 16|STATEID== 17|STATEID== 18) & (XPOOR1==1)
+
+  {txt}RECODE of GROUPS6 {c |}
+       (HQ3 1.13-15 {c |}
+     Caste/religion {c |}
+             6cats) {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+Hindu Forward Caste {c |}{res}         16        6.58        6.58
+{txt}          Hindu OBC {c |}{res}         14        5.76       12.35
+{txt}           Hindu SC {c |}{res}         22        9.05       21.40
+{txt}           Hindu ST {c |}{res}         69       28.40       49.79
+{txt}            Muslims {c |}{res}        122       50.21      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}        243      100.00
+
+{com}. 
+. 
+. 
+. **QA3
+
+. 
+. bysort URBAN: tab rcaste if STATEID== 11|STATEID== 12|STATEID== 13|STATEID== 14|STATEID== 15|STATEID== 16|STATEID== 17|STATEID== 18
+
+{txt}{hline}
+-> URBAN = rural 0
+
+  RECODE of GROUPS6 {c |}
+       (HQ3 1.13-15 {c |}
+     Caste/religion {c |}
+             6cats) {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+Hindu Forward Caste {c |}{res}        180       17.39       17.39
+{txt}          Hindu OBC {c |}{res}        122       11.79       29.18
+{txt}           Hindu SC {c |}{res}        105       10.14       39.32
+{txt}           Hindu ST {c |}{res}        403       38.94       78.26
+{txt}            Muslims {c |}{res}        224       21.64       99.90
+{txt}             Others {c |}{res}          1        0.10      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}      1,035      100.00
+
+{txt}{hline}
+-> URBAN = urban 1
+
+  RECODE of GROUPS6 {c |}
+       (HQ3 1.13-15 {c |}
+     Caste/religion {c |}
+             6cats) {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+Hindu Forward Caste {c |}{res}        176       35.56       35.56
+{txt}          Hindu OBC {c |}{res}        110       22.22       57.78
+{txt}           Hindu SC {c |}{res}         63       12.73       70.51
+{txt}           Hindu ST {c |}{res}         99       20.00       90.51
+{txt}            Muslims {c |}{res}         44        8.89       99.39
+{txt}             Others {c |}{res}          3        0.61      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}        495      100.00
+
+
+{com}. 
+. bysort URBAN: tab rcaste if (STATEID== 11|STATEID== 12|STATEID== 13|STATEID== 14|STATEID== 15|STATEID== 16|STATEID== 17|STATEID== 18) & (XPOOR1==1)
+
+{txt}{hline}
+-> URBAN = rural 0
+
+  RECODE of GROUPS6 {c |}
+       (HQ3 1.13-15 {c |}
+     Caste/religion {c |}
+             6cats) {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+Hindu Forward Caste {c |}{res}         11        5.07        5.07
+{txt}          Hindu OBC {c |}{res}          9        4.15        9.22
+{txt}           Hindu SC {c |}{res}         13        5.99       15.21
+{txt}           Hindu ST {c |}{res}         68       31.34       46.54
+{txt}            Muslims {c |}{res}        116       53.46      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}        217      100.00
+
+{txt}{hline}
+-> URBAN = urban 1
+
+  RECODE of GROUPS6 {c |}
+       (HQ3 1.13-15 {c |}
+     Caste/religion {c |}
+             6cats) {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+Hindu Forward Caste {c |}{res}          5       19.23       19.23
+{txt}          Hindu OBC {c |}{res}          5       19.23       38.46
+{txt}           Hindu SC {c |}{res}          9       34.62       73.08
+{txt}           Hindu ST {c |}{res}          1        3.85       76.92
+{txt}            Muslims {c |}{res}          6       23.08      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}         26      100.00
+
+
+{com}. 
+. 
+. 
+. **Q4: step 1
+
+. 
+. tab rcaste if (STATEID== 11|STATEID== 12|STATEID== 13|STATEID== 14|STATEID== 15|STATEID== 16|STATEID== 17|STATEID== 18) & (POOR2==1)
+
+  {txt}RECODE of GROUPS6 {c |}
+       (HQ3 1.13-15 {c |}
+     Caste/religion {c |}
+             6cats) {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+Hindu Forward Caste {c |}{res}         17        7.49        7.49
+{txt}          Hindu OBC {c |}{res}         16        7.05       14.54
+{txt}           Hindu SC {c |}{res}         15        6.61       21.15
+{txt}           Hindu ST {c |}{res}         86       37.89       59.03
+{txt}            Muslims {c |}{res}         92       40.53       99.56
+{txt}             Others {c |}{res}          1        0.44      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}        227      100.00
+
+{com}. 
+. **Q4: step 2
+
+. 
+. bysort URBAN: tab rcaste if (STATEID== 11|STATEID== 12|STATEID== 13|STATEID== 14|STATEID== 15|STATEID== 16|STATEID== 17|STATEID== 18) & (POOR2==1)
+
+{txt}{hline}
+-> URBAN = rural 0
+
+  RECODE of GROUPS6 {c |}
+       (HQ3 1.13-15 {c |}
+     Caste/religion {c |}
+             6cats) {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+Hindu Forward Caste {c |}{res}         14        6.97        6.97
+{txt}          Hindu OBC {c |}{res}         10        4.98       11.94
+{txt}           Hindu SC {c |}{res}          9        4.48       16.42
+{txt}           Hindu ST {c |}{res}         82       40.80       57.21
+{txt}            Muslims {c |}{res}         86       42.79      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}        201      100.00
+
+{txt}{hline}
+-> URBAN = urban 1
+
+  RECODE of GROUPS6 {c |}
+       (HQ3 1.13-15 {c |}
+     Caste/religion {c |}
+             6cats) {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+Hindu Forward Caste {c |}{res}          3       11.54       11.54
+{txt}          Hindu OBC {c |}{res}          6       23.08       34.62
+{txt}           Hindu SC {c |}{res}          6       23.08       57.69
+{txt}           Hindu ST {c |}{res}          4       15.38       73.08
+{txt}            Muslims {c |}{res}          6       23.08       96.15
+{txt}             Others {c |}{res}          1        3.85      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}         26      100.00
+
+
+{com}. set more off
+
+. **Q5: Poverty transition
+
+. 
+. **Creating a new 4 categorical variable for poverty transition
+
+. 
+. gen pov_transition=0 if (XPOOR1==1) & (POOR2==1)
+{txt}(37,063 missing values generated)
+
+{com}. 
+. replace pov_transition=1 if (XPOOR1==0) & (POOR2==0)
+{txt}(27,121 real changes made)
+
+{com}. 
+. replace pov_transition=2 if (XPOOR1==1) & (POOR2==0)
+{txt}(6,114 real changes made)
+
+{com}. 
+. replace pov_transition=3 if (XPOOR1==0) & (POOR2==1)
+{txt}(3,759 real changes made)
+
+{com}. 
+. label define pov_transition 0 "Poor stays Poor" 1 "Non-poor stays Non-poor" 2 "Poor moves on to Non-Poor" 3 "Non-poor becomes Poor"
+
+. 
+. label value pov_transition pov_transition
+
+. 
+. label variable pov_transition "4 category Poverty Transition"
+
+. 
+. tab pov_transition
+
+       {txt}4 category Poverty {c |}
+               Transition {c |}      Freq.     Percent        Cum.
+{hline 26}{c +}{hline 35}
+          Poor stays Poor {c |}{res}      2,955        7.40        7.40
+{txt}  Non-poor stays Non-poor {c |}{res}     27,121       67.89       75.29
+{txt}Poor moves on to Non-Poor {c |}{res}      6,114       15.30       90.59
+{txt}    Non-poor becomes Poor {c |}{res}      3,759        9.41      100.00
+{txt}{hline 26}{c +}{hline 35}
+                    Total {c |}{res}     39,949      100.00
+
+{com}. 
+. 
+. 
+. bysort rcaste: tab pov_transition if (STATEID== 11|STATEID== 12|STATEID== 13|STATEID== 14|STATEID== 15|STATEID== 16|STATEID== 17|STATEID== 18)
+
+{txt}{hline}
+-> rcaste = Hindu Forward Caste
+
+       4 category Poverty {c |}
+               Transition {c |}      Freq.     Percent        Cum.
+{hline 26}{c +}{hline 35}
+          Poor stays Poor {c |}{res}          1        0.28        0.28
+{txt}  Non-poor stays Non-poor {c |}{res}        323       90.99       91.27
+{txt}Poor moves on to Non-Poor {c |}{res}         15        4.23       95.49
+{txt}    Non-poor becomes Poor {c |}{res}         16        4.51      100.00
+{txt}{hline 26}{c +}{hline 35}
+                    Total {c |}{res}        355      100.00
+
+{txt}{hline}
+-> rcaste = Hindu OBC
+
+       4 category Poverty {c |}
+               Transition {c |}      Freq.     Percent        Cum.
+{hline 26}{c +}{hline 35}
+          Poor stays Poor {c |}{res}          1        0.43        0.43
+{txt}  Non-poor stays Non-poor {c |}{res}        202       87.45       87.88
+{txt}Poor moves on to Non-Poor {c |}{res}         13        5.63       93.51
+{txt}    Non-poor becomes Poor {c |}{res}         15        6.49      100.00
+{txt}{hline 26}{c +}{hline 35}
+                    Total {c |}{res}        231      100.00
+
+{txt}{hline}
+-> rcaste = Hindu SC
+
+       4 category Poverty {c |}
+               Transition {c |}      Freq.     Percent        Cum.
+{hline 26}{c +}{hline 35}
+          Poor stays Poor {c |}{res}          3        1.79        1.79
+{txt}  Non-poor stays Non-poor {c |}{res}        134       79.76       81.55
+{txt}Poor moves on to Non-Poor {c |}{res}         19       11.31       92.86
+{txt}    Non-poor becomes Poor {c |}{res}         12        7.14      100.00
+{txt}{hline 26}{c +}{hline 35}
+                    Total {c |}{res}        168      100.00
+
+{txt}{hline}
+-> rcaste = Hindu ST
+
+       4 category Poverty {c |}
+               Transition {c |}      Freq.     Percent        Cum.
+{hline 26}{c +}{hline 35}
+          Poor stays Poor {c |}{res}         18        3.59        3.59
+{txt}  Non-poor stays Non-poor {c |}{res}        365       72.85       76.45
+{txt}Poor moves on to Non-Poor {c |}{res}         50        9.98       86.43
+{txt}    Non-poor becomes Poor {c |}{res}         68       13.57      100.00
+{txt}{hline 26}{c +}{hline 35}
+                    Total {c |}{res}        501      100.00
+
+{txt}{hline}
+-> rcaste = Muslims
+
+       4 category Poverty {c |}
+               Transition {c |}      Freq.     Percent        Cum.
+{hline 26}{c +}{hline 35}
+          Poor stays Poor {c |}{res}         45       16.79       16.79
+{txt}  Non-poor stays Non-poor {c |}{res}         99       36.94       53.73
+{txt}Poor moves on to Non-Poor {c |}{res}         77       28.73       82.46
+{txt}    Non-poor becomes Poor {c |}{res}         47       17.54      100.00
+{txt}{hline 26}{c +}{hline 35}
+                    Total {c |}{res}        268      100.00
+
+{txt}{hline}
+-> rcaste = Others
+
+       4 category Poverty {c |}
+               Transition {c |}      Freq.     Percent        Cum.
+{hline 26}{c +}{hline 35}
+  Non-poor stays Non-poor {c |}{res}          3       75.00       75.00
+{txt}    Non-poor becomes Poor {c |}{res}          1       25.00      100.00
+{txt}{hline 26}{c +}{hline 35}
+                    Total {c |}{res}          4      100.00
+
+{txt}{hline}
+-> rcaste = .
+
+       4 category Poverty {c |}
+               Transition {c |}      Freq.     Percent        Cum.
+{hline 26}{c +}{hline 35}
+  Non-poor stays Non-poor {c |}{res}          6      100.00      100.00
+{txt}{hline 26}{c +}{hline 35}
+                    Total {c |}{res}          6      100.00
+
+
+{com}. **Assignment A: For all India sample 
+
+. 
+. **Q1
+
+. 
+. tab rcaste
+
+  {txt}RECODE of GROUPS6 {c |}
+       (HQ3 1.13-15 {c |}
+     Caste/religion {c |}
+             6cats) {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+Hindu Forward Caste {c |}{res}      8,630       21.58       21.58
+{txt}          Hindu OBC {c |}{res}     13,619       34.05       55.63
+{txt}           Hindu SC {c |}{res}      8,583       21.46       77.09
+{txt}           Hindu ST {c |}{res}      3,461        8.65       85.74
+{txt}            Muslims {c |}{res}      4,561       11.40       97.14
+{txt}             Others {c |}{res}      1,142        2.86      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}     39,996      100.00
+
+{com}. 
+. 
+. 
+. **Q2
+
+. 
+. **All india Poor
+
+. 
+. tab rcaste if (XPOOR1==1)
+
+  {txt}RECODE of GROUPS6 {c |}
+       (HQ3 1.13-15 {c |}
+     Caste/religion {c |}
+             6cats) {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+Hindu Forward Caste {c |}{res}        824        9.08        9.08
+{txt}          Hindu OBC {c |}{res}      2,975       32.79       41.87
+{txt}           Hindu SC {c |}{res}      2,344       25.83       67.71
+{txt}           Hindu ST {c |}{res}      1,541       16.98       84.69
+{txt}            Muslims {c |}{res}      1,307       14.41       99.10
+{txt}             Others {c |}{res}         82        0.90      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}      9,073      100.00
+
+{com}. 
+. 
+. 
+. **Q3
+
+. 
+. **Sorting by Urban/Rural
+
+. 
+. bysort URBAN: tab rcaste
+
+{txt}{hline}
+-> URBAN = rural 0
+
+  RECODE of GROUPS6 {c |}
+       (HQ3 1.13-15 {c |}
+     Caste/religion {c |}
+             6cats) {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+Hindu Forward Caste {c |}{res}      5,129       18.79       18.79
+{txt}          Hindu OBC {c |}{res}      9,704       35.55       54.33
+{txt}           Hindu SC {c |}{res}      6,250       22.89       77.23
+{txt}           Hindu ST {c |}{res}      3,031       11.10       88.33
+{txt}            Muslims {c |}{res}      2,529        9.26       97.59
+{txt}             Others {c |}{res}        657        2.41      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}     27,300      100.00
+
+{txt}{hline}
+-> URBAN = urban 1
+
+  RECODE of GROUPS6 {c |}
+       (HQ3 1.13-15 {c |}
+     Caste/religion {c |}
+             6cats) {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+Hindu Forward Caste {c |}{res}      3,501       27.58       27.58
+{txt}          Hindu OBC {c |}{res}      3,915       30.84       58.41
+{txt}           Hindu SC {c |}{res}      2,333       18.38       76.79
+{txt}           Hindu ST {c |}{res}        430        3.39       80.17
+{txt}            Muslims {c |}{res}      2,032       16.01       96.18
+{txt}             Others {c |}{res}        485        3.82      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}     12,696      100.00
+
+
+{com}. 
+. **Sorting by Urban/Rural for Poor 2004-05
+
+. 
+. bysort URBAN: tab rcaste if (XPOOR1==1)
+
+{txt}{hline}
+-> URBAN = rural 0
+
+  RECODE of GROUPS6 {c |}
+       (HQ3 1.13-15 {c |}
+     Caste/religion {c |}
+             6cats) {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+Hindu Forward Caste {c |}{res}        538        8.43        8.43
+{txt}          Hindu OBC {c |}{res}      2,084       32.67       41.10
+{txt}           Hindu SC {c |}{res}      1,674       26.24       67.35
+{txt}           Hindu ST {c |}{res}      1,442       22.61       89.95
+{txt}            Muslims {c |}{res}        610        9.56       99.51
+{txt}             Others {c |}{res}         31        0.49      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}      6,379      100.00
+
+{txt}{hline}
+-> URBAN = urban 1
+
+  RECODE of GROUPS6 {c |}
+       (HQ3 1.13-15 {c |}
+     Caste/religion {c |}
+             6cats) {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+Hindu Forward Caste {c |}{res}        286       10.62       10.62
+{txt}          Hindu OBC {c |}{res}        891       33.07       43.69
+{txt}           Hindu SC {c |}{res}        670       24.87       68.56
+{txt}           Hindu ST {c |}{res}         99        3.67       72.23
+{txt}            Muslims {c |}{res}        697       25.87       98.11
+{txt}             Others {c |}{res}         51        1.89      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}      2,694      100.00
+
+
+{com}. 
+. 
+. 
+. **Q4
+
+. 
+. **All india Poor
+
+. 
+. tab rcaste if (POOR2==1)
+
+  {txt}RECODE of GROUPS6 {c |}
+       (HQ3 1.13-15 {c |}
+     Caste/religion {c |}
+             6cats) {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+Hindu Forward Caste {c |}{res}        627        9.33        9.33
+{txt}          Hindu OBC {c |}{res}      2,104       31.32       40.65
+{txt}           Hindu SC {c |}{res}      1,899       28.27       68.92
+{txt}           Hindu ST {c |}{res}      1,232       18.34       87.26
+{txt}            Muslims {c |}{res}        813       12.10       99.36
+{txt}             Others {c |}{res}         43        0.64      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}      6,718      100.00
+
+{com}. 
+. 
+. 
+. **Sorting by Urban/Rural for Poor 2011-12
+
+. 
+. bysort URBAN: tab rcaste if (POOR2==1)
+
+{txt}{hline}
+-> URBAN = rural 0
+
+  RECODE of GROUPS6 {c |}
+       (HQ3 1.13-15 {c |}
+     Caste/religion {c |}
+             6cats) {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+Hindu Forward Caste {c |}{res}        475        8.92        8.92
+{txt}          Hindu OBC {c |}{res}      1,650       30.99       39.91
+{txt}           Hindu SC {c |}{res}      1,541       28.94       68.86
+{txt}           Hindu ST {c |}{res}      1,153       21.66       90.51
+{txt}            Muslims {c |}{res}        479        9.00       99.51
+{txt}             Others {c |}{res}         26        0.49      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}      5,324      100.00
+
+{txt}{hline}
+-> URBAN = urban 1
+
+  RECODE of GROUPS6 {c |}
+       (HQ3 1.13-15 {c |}
+     Caste/religion {c |}
+             6cats) {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+Hindu Forward Caste {c |}{res}        152       10.90       10.90
+{txt}          Hindu OBC {c |}{res}        454       32.57       43.47
+{txt}           Hindu SC {c |}{res}        358       25.68       69.15
+{txt}           Hindu ST {c |}{res}         79        5.67       74.82
+{txt}            Muslims {c |}{res}        334       23.96       98.78
+{txt}             Others {c |}{res}         17        1.22      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}      1,394      100.00
+
+
+{com}. 
+. 
+. 
+. **Q5
+
+. 
+. tab XPOOR1 POOR2, row
+{txt}
+{c TLC}{hline 16}{c TRC}
+{c |} Key{col 18}{c |}
+{c LT}{hline 16}{c RT}
+{c |}{space 3}{it:frequency}{col 18}{c |}
+{c |}{space 1}{it:row percentage}{col 18}{c |}
+{c BLC}{hline 16}{c BRC}
+
+   Poverty {c |}
+     using {c |}
+    2004-5 {c |}  Poverty using 2012
+ Tendulkar {c |}   Tendulkar cutoffs
+   cutoffs {c |} nonpoor 0     poor 1 {c |}     Total
+{hline 11}{c +}{hline 22}{c +}{hline 10}
+ nonpoor 0 {c |}{res}    27,121      3,759 {txt}{c |}{res}    30,880 
+           {txt}{c |}{res}     87.83      12.17 {txt}{c |}{res}    100.00 
+{txt}{hline 11}{c +}{hline 22}{c +}{hline 10}
+    poor 1 {c |}{res}     6,114      2,955 {txt}{c |}{res}     9,069 
+           {txt}{c |}{res}     67.42      32.58 {txt}{c |}{res}    100.00 
+{txt}{hline 11}{c +}{hline 22}{c +}{hline 10}
+     Total {c |}{res}    33,235      6,714 {txt}{c |}{res}    39,949 
+           {txt}{c |}{res}     83.19      16.81 {txt}{c |}{res}    100.00 
+
+
+{com}. 
+. bysort rcaste: tab pov_transition
+
+{txt}{hline}
+-> rcaste = Hindu Forward Caste
+
+       4 category Poverty {c |}
+               Transition {c |}      Freq.     Percent        Cum.
+{hline 26}{c +}{hline 35}
+          Poor stays Poor {c |}{res}        152        1.77        1.77
+{txt}  Non-poor stays Non-poor {c |}{res}      7,309       84.93       86.70
+{txt}Poor moves on to Non-Poor {c |}{res}        670        7.79       94.48
+{txt}    Non-poor becomes Poor {c |}{res}        475        5.52      100.00
+{txt}{hline 26}{c +}{hline 35}
+                    Total {c |}{res}      8,606      100.00
+
+{txt}{hline}
+-> rcaste = Hindu OBC
+
+       4 category Poverty {c |}
+               Transition {c |}      Freq.     Percent        Cum.
+{hline 26}{c +}{hline 35}
+          Poor stays Poor {c |}{res}        839        6.17        6.17
+{txt}  Non-poor stays Non-poor {c |}{res}      9,363       68.84       75.01
+{txt}Poor moves on to Non-Poor {c |}{res}      2,135       15.70       90.71
+{txt}    Non-poor becomes Poor {c |}{res}      1,264        9.29      100.00
+{txt}{hline 26}{c +}{hline 35}
+                    Total {c |}{res}     13,601      100.00
+
+{txt}{hline}
+-> rcaste = Hindu SC
+
+       4 category Poverty {c |}
+               Transition {c |}      Freq.     Percent        Cum.
+{hline 26}{c +}{hline 35}
+          Poor stays Poor {c |}{res}        789        9.20        9.20
+{txt}  Non-poor stays Non-poor {c |}{res}      5,120       59.73       68.93
+{txt}Poor moves on to Non-Poor {c |}{res}      1,555       18.14       87.07
+{txt}    Non-poor becomes Poor {c |}{res}      1,108       12.93      100.00
+{txt}{hline 26}{c +}{hline 35}
+                    Total {c |}{res}      8,572      100.00
+
+{txt}{hline}
+-> rcaste = Hindu ST
+
+       4 category Poverty {c |}
+               Transition {c |}      Freq.     Percent        Cum.
+{hline 26}{c +}{hline 35}
+          Poor stays Poor {c |}{res}        797       23.07       23.07
+{txt}  Non-poor stays Non-poor {c |}{res}      1,482       42.91       65.98
+{txt}Poor moves on to Non-Poor {c |}{res}        742       21.48       87.46
+{txt}    Non-poor becomes Poor {c |}{res}        433       12.54      100.00
+{txt}{hline 26}{c +}{hline 35}
+                    Total {c |}{res}      3,454      100.00
+
+{txt}{hline}
+-> rcaste = Muslims
+
+       4 category Poverty {c |}
+               Transition {c |}      Freq.     Percent        Cum.
+{hline 26}{c +}{hline 35}
+          Poor stays Poor {c |}{res}        367        8.05        8.05
+{txt}  Non-poor stays Non-poor {c |}{res}      2,806       61.55       69.60
+{txt}Poor moves on to Non-Poor {c |}{res}        940       20.62       90.22
+{txt}    Non-poor becomes Poor {c |}{res}        446        9.78      100.00
+{txt}{hline 26}{c +}{hline 35}
+                    Total {c |}{res}      4,559      100.00
+
+{txt}{hline}
+-> rcaste = Others
+
+       4 category Poverty {c |}
+               Transition {c |}      Freq.     Percent        Cum.
+{hline 26}{c +}{hline 35}
+          Poor stays Poor {c |}{res}         11        0.97        0.97
+{txt}  Non-poor stays Non-poor {c |}{res}      1,022       89.96       90.93
+{txt}Poor moves on to Non-Poor {c |}{res}         71        6.25       97.18
+{txt}    Non-poor becomes Poor {c |}{res}         32        2.82      100.00
+{txt}{hline 26}{c +}{hline 35}
+                    Total {c |}{res}      1,136      100.00
+
+{txt}{hline}
+-> rcaste = .
+
+       4 category Poverty {c |}
+               Transition {c |}      Freq.     Percent        Cum.
+{hline 26}{c +}{hline 35}
+  Non-poor stays Non-poor {c |}{res}         19       90.48       90.48
+{txt}Poor moves on to Non-Poor {c |}{res}          1        4.76       95.24
+{txt}    Non-poor becomes Poor {c |}{res}          1        4.76      100.00
+{txt}{hline 26}{c +}{hline 35}
+                    Total {c |}{res}         21      100.00
+
+
+{com}. **Q8: running prtest to test the diff in prop between nE and India
+
+. 
+. recode rcaste (1=1) (else = 0), gen(HinduForwIND)
+{txt}(31388 differences between rcaste and HinduForwIND)
+
+{com}. 
+. recode rcaste (1=1)(else = 0) if (STATEID == 11 | STATEID == 12 | STATEID == 13 | STATEID == 14 | STATEID == 15 | STATEID == 16 | STATEID == 17 | STATEID == 18) , gen (HinduForwNE)
+{txt}(1180 differences between rcaste and HinduForwNE)
+
+{com}. 
+. prtest HinduForwIND == HinduForwNE
+
+{txt}Two-sample test of proportions          {res}HinduForwIND{txt}: Number of obs = {res}   40018
+                                         HinduForwNE{txt}: Number of obs = {res}    1536
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 1}HinduForwIND{col 14}{c |}{res}{col 17}  .215653{col 28} .0020559{col 58} .2116234{col 70} .2196825
+ {txt}HinduForwNE {c |}{res}{col 17} .2317708{col 28} .0107666{col 58} .2106687{col 70}  .252873
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17}-.0161179{col 28} .0109611{col 58}-.0376013{col 70} .0053656
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0107041{col 38}   -1.51{col 49}0.132
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduForwIND{txt}) - prop({res}HinduForwNE{txt})             z = {res} -1.5058
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.0661         {txt}Pr(|Z| > |z|) = {res}0.1321          {txt}Pr(Z > z) = {res}0.9339
+
+{com}. 
+. **rural/urban
+
+. 
+. bysort URBAN: prtest HinduForwIND == HinduForwNE
+
+{txt}{hline}
+-> URBAN = rural 0
+
+Two-sample test of proportions          {res}HinduForwIND{txt}: Number of obs = {res}   27308
+                                         HinduForwNE{txt}: Number of obs = {res}    1038
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 1}HinduForwIND{col 14}{c |}{res}{col 17} .1878204{col 28} .0023635{col 58} .1831881{col 70} .1924528
+ {txt}HinduForwNE {c |}{res}{col 17} .1734104{col 28} .0117512{col 58} .1503784{col 70} .1964424
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17}   .01441{col 28} .0119866{col 58}-.0090832{col 70} .0379033
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0123376{col 38}    1.17{col 49}0.243
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduForwIND{txt}) - prop({res}HinduForwNE{txt})             z = {res}  1.1680
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.8786         {txt}Pr(|Z| > |z|) = {res}0.2428          {txt}Pr(Z > z) = {res}0.1214
+
+{txt}{hline}
+-> URBAN = urban 1
+
+Two-sample test of proportions          {res}HinduForwIND{txt}: Number of obs = {res}   12710
+                                         HinduForwNE{txt}: Number of obs = {res}     498
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 1}HinduForwIND{col 14}{c |}{res}{col 17} .2754524{col 28} .0039626{col 58} .2676858{col 70}  .283219
+ {txt}HinduForwNE {c |}{res}{col 17} .3534137{col 28}  .021421{col 58} .3114292{col 70} .3953981
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17}-.0779613{col 28} .0217845{col 58} -.120658{col 70}-.0352645
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0204743{col 38}   -3.81{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduForwIND{txt}) - prop({res}HinduForwNE{txt})             z = {res} -3.8078
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.0001         {txt}Pr(|Z| > |z|) = {res}0.0001          {txt}Pr(Z > z) = {res}0.9999
+
+{com}. 
+. bysort URBAN: prtest HinduForwIND == HinduForwNE if (XPOOR1==1)
+
+{txt}{hline}
+-> URBAN = rural 0
+
+Two-sample test of proportions          {res}HinduForwIND{txt}: Number of obs = {res}    6379
+                                         HinduForwNE{txt}: Number of obs = {res}     217
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 1}HinduForwIND{col 14}{c |}{res}{col 17} .0843392{col 28} .0034794{col 58} .0775197{col 70} .0911588
+ {txt}HinduForwNE {c |}{res}{col 17} .0506912{col 28} .0148916{col 58} .0215043{col 70} .0798782
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17}  .033648{col 28} .0152926{col 58}  .003675{col 70}  .063621
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0190682{col 38}    1.76{col 49}0.078
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduForwIND{txt}) - prop({res}HinduForwNE{txt})             z = {res}  1.7646
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.9612         {txt}Pr(|Z| > |z|) = {res}0.0776          {txt}Pr(Z > z) = {res}0.0388
+
+{txt}{hline}
+-> URBAN = urban 1
+
+Two-sample test of proportions          {res}HinduForwIND{txt}: Number of obs = {res}    2695
+                                         HinduForwNE{txt}: Number of obs = {res}      26
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 1}HinduForwIND{col 14}{c |}{res}{col 17} .1061224{col 28} .0059328{col 58} .0944943{col 70} .1177506
+ {txt}HinduForwNE {c |}{res}{col 17} .1923077{col 28}  .077292{col 58} .0408181{col 70} .3437973
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17}-.0861852{col 28} .0775194{col 58}-.2381204{col 70} .0657499
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0609003{col 38}   -1.42{col 49}0.157
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduForwIND{txt}) - prop({res}HinduForwNE{txt})             z = {res} -1.4152
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.0785         {txt}Pr(|Z| > |z|) = {res}0.1570          {txt}Pr(Z > z) = {res}0.9215
+
+{com}. 
+. 
+. 
+. ***** for hindu obc***
+
+. 
+. recode rcaste (2=1) (else = 0), gen(HinduOBCIND)
+{txt}(40018 differences between rcaste and HinduOBCIND)
+
+{com}. 
+. recode rcaste (2=1)(else = 0) if (STATEID == 11 | STATEID == 12 | STATEID == 13 | STATEID == 14 | STATEID == 15 | STATEID == 16 | STATEID == 17 | STATEID == 18) , gen (HinduOBCNE)
+{txt}(1536 differences between rcaste and HinduOBCNE)
+
+{com}. 
+. prtest HinduOBCIND == HinduOBCNE
+
+{txt}Two-sample test of proportions           {res}HinduOBCIND{txt}: Number of obs = {res}   40018
+                                          HinduOBCNE{txt}: Number of obs = {res}    1536
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 2}HinduOBCIND{col 14}{c |}{res}{col 17} .3403219{col 28} .0023686{col 58} .3356796{col 70} .3449641
+  {txt}HinduOBCNE {c |}{res}{col 17} .1510417{col 28} .0091368{col 58} .1331338{col 70} .1689495
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17} .1892802{col 28} .0094388{col 58} .1707804{col 70}   .20778
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0122567{col 38}   15.44{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduOBCIND{txt}) - prop({res}HinduOBCNE{txt})               z = {res} 15.4430
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}1.0000         {txt}Pr(|Z| > |z|) = {res}0.0000          {txt}Pr(Z > z) = {res}0.0000
+
+{com}. 
+. **rural/urban
+
+. 
+. bysort URBAN: prtest HinduOBCIND == HinduOBCNE
+
+{txt}{hline}
+-> URBAN = rural 0
+
+Two-sample test of proportions           {res}HinduOBCIND{txt}: Number of obs = {res}   27308
+                                          HinduOBCNE{txt}: Number of obs = {res}    1038
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 2}HinduOBCIND{col 14}{c |}{res}{col 17} .3553537{col 28} .0028963{col 58} .3496771{col 70} .3610304
+  {txt}HinduOBCNE {c |}{res}{col 17} .1175337{col 28} .0099961{col 58} .0979417{col 70} .1371258
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17}   .23782{col 28} .0104073{col 58} .2174222{col 70} .2582179
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0150494{col 38}   15.80{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduOBCIND{txt}) - prop({res}HinduOBCNE{txt})               z = {res} 15.8026
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}1.0000         {txt}Pr(|Z| > |z|) = {res}0.0000          {txt}Pr(Z > z) = {res}0.0000
+
+{txt}{hline}
+-> URBAN = urban 1
+
+Two-sample test of proportions           {res}HinduOBCIND{txt}: Number of obs = {res}   12710
+                                          HinduOBCNE{txt}: Number of obs = {res}     498
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 2}HinduOBCIND{col 14}{c |}{res}{col 17} .3080252{col 28} .0040951{col 58} .2999989{col 70} .3160514
+  {txt}HinduOBCNE {c |}{res}{col 17} .2208835{col 28} .0185895{col 58} .1844487{col 70} .2573183
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17} .0871416{col 28} .0190352{col 58} .0498333{col 70}   .12445
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0210266{col 38}    4.14{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduOBCIND{txt}) - prop({res}HinduOBCNE{txt})               z = {res}  4.1444
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}1.0000         {txt}Pr(|Z| > |z|) = {res}0.0000          {txt}Pr(Z > z) = {res}0.0000
+
+{com}. 
+. bysort URBAN: prtest HinduOBCIND == HinduOBCNE if (XPOOR1==1)
+
+{txt}{hline}
+-> URBAN = rural 0
+
+Two-sample test of proportions           {res}HinduOBCIND{txt}: Number of obs = {res}    6379
+                                          HinduOBCNE{txt}: Number of obs = {res}     217
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 2}HinduOBCIND{col 14}{c |}{res}{col 17}  .326697{col 28} .0058722{col 58} .3151877{col 70} .3382063
+  {txt}HinduOBCNE {c |}{res}{col 17} .0414747{col 28} .0135352{col 58} .0149462{col 70} .0680031
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17} .2852223{col 28} .0147541{col 58} .2563048{col 70} .3141398
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0321284{col 38}    8.88{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduOBCIND{txt}) - prop({res}HinduOBCNE{txt})               z = {res}  8.8776
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}1.0000         {txt}Pr(|Z| > |z|) = {res}0.0000          {txt}Pr(Z > z) = {res}0.0000
+
+{txt}{hline}
+-> URBAN = urban 1
+
+Two-sample test of proportions           {res}HinduOBCIND{txt}: Number of obs = {res}    2695
+                                          HinduOBCNE{txt}: Number of obs = {res}      26
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 2}HinduOBCIND{col 14}{c |}{res}{col 17} .3306122{col 28} .0090619{col 58} .3128513{col 70} .3483732
+  {txt}HinduOBCNE {c |}{res}{col 17} .1923077{col 28}  .077292{col 58} .0408181{col 70} .3437973
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17} .1383046{col 28} .0778214{col 58}-.0142226{col 70} .2908317
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0926094{col 38}    1.49{col 49}0.135
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduOBCIND{txt}) - prop({res}HinduOBCNE{txt})               z = {res}  1.4934
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.9323         {txt}Pr(|Z| > |z|) = {res}0.1353          {txt}Pr(Z > z) = {res}0.0677
+
+{com}. 
+. 
+. 
+. ****for hindu SC****
+
+. 
+. recode rcaste (3=1) (else = 0), gen(HinduSCIND)
+{txt}(40018 differences between rcaste and HinduSCIND)
+
+{com}. 
+. recode rcaste (3=1)(else = 0) if (STATEID == 11 | STATEID == 12 | STATEID == 13 | STATEID == 14 | STATEID == 15 | STATEID == 16 | STATEID == 17 | STATEID == 18) , gen (HinduSCNE)
+{txt}(1536 differences between rcaste and HinduSCNE)
+
+{com}. 
+. prtest HinduSCIND == HinduSCNE
+
+{txt}Two-sample test of proportions            {res}HinduSCIND{txt}: Number of obs = {res}   40018
+                                           HinduSCNE{txt}: Number of obs = {res}    1536
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 3}HinduSCIND{col 14}{c |}{res}{col 17} .2144785{col 28} .0020518{col 58}  .210457{col 70}    .2185
+   {txt}HinduSCNE {c |}{res}{col 17}  .109375{col 28} .0079636{col 58} .0937666{col 70} .1249834
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17} .1051035{col 28} .0082237{col 58} .0889853{col 70} .1212217
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0106012{col 38}    9.91{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduSCIND{txt}) - prop({res}HinduSCNE{txt})                 z = {res}  9.9143
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}1.0000         {txt}Pr(|Z| > |z|) = {res}0.0000          {txt}Pr(Z > z) = {res}0.0000
+
+{com}. 
+. **rural/urban
+
+. 
+. bysort URBAN: prtest HinduSCIND == HinduSCNE
+
+{txt}{hline}
+-> URBAN = rural 0
+
+Two-sample test of proportions            {res}HinduSCIND{txt}: Number of obs = {res}   27308
+                                           HinduSCNE{txt}: Number of obs = {res}    1038
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 3}HinduSCIND{col 14}{c |}{res}{col 17} .2288707{col 28} .0025422{col 58}  .223888{col 70} .2338533
+   {txt}HinduSCNE {c |}{res}{col 17} .1011561{col 28} .0093592{col 58} .0828123{col 70} .1194998
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17} .1277146{col 28} .0096983{col 58} .1087062{col 70}  .146723
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0131884{col 38}    9.68{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduSCIND{txt}) - prop({res}HinduSCNE{txt})                 z = {res}  9.6839
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}1.0000         {txt}Pr(|Z| > |z|) = {res}0.0000          {txt}Pr(Z > z) = {res}0.0000
+
+{txt}{hline}
+-> URBAN = urban 1
+
+Two-sample test of proportions            {res}HinduSCIND{txt}: Number of obs = {res}   12710
+                                           HinduSCNE{txt}: Number of obs = {res}     498
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 3}HinduSCIND{col 14}{c |}{res}{col 17} .1835563{col 28} .0034338{col 58} .1768261{col 70} .1902864
+   {txt}HinduSCNE {c |}{res}{col 17}  .126506{col 28}  .014896{col 58} .0973103{col 70} .1557017
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17} .0570502{col 28} .0152867{col 58} .0270889{col 70} .0870116
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0176032{col 38}    3.24{col 49}0.001
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduSCIND{txt}) - prop({res}HinduSCNE{txt})                 z = {res}  3.2409
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.9994         {txt}Pr(|Z| > |z|) = {res}0.0012          {txt}Pr(Z > z) = {res}0.0006
+
+{com}. 
+. bysort URBAN: prtest HinduSCIND == HinduSCNE if (XPOOR1==1)
+
+{txt}{hline}
+-> URBAN = rural 0
+
+Two-sample test of proportions            {res}HinduSCIND{txt}: Number of obs = {res}    6379
+                                           HinduSCNE{txt}: Number of obs = {res}     217
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 3}HinduSCIND{col 14}{c |}{res}{col 17} .2624236{col 28} .0055084{col 58} .2516272{col 70} .2732199
+   {txt}HinduSCNE {c |}{res}{col 17} .0599078{col 28} .0161101{col 58} .0283327{col 70}  .091483
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17} .2025157{col 28} .0170258{col 58} .1691458{col 70} .2358856
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0301167{col 38}    6.72{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduSCIND{txt}) - prop({res}HinduSCNE{txt})                 z = {res}  6.7244
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}1.0000         {txt}Pr(|Z| > |z|) = {res}0.0000          {txt}Pr(Z > z) = {res}0.0000
+
+{txt}{hline}
+-> URBAN = urban 1
+
+Two-sample test of proportions            {res}HinduSCIND{txt}: Number of obs = {res}    2695
+                                           HinduSCNE{txt}: Number of obs = {res}      26
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 3}HinduSCIND{col 14}{c |}{res}{col 17} .2486085{col 28} .0083255{col 58} .2322908{col 70} .2649263
+   {txt}HinduSCNE {c |}{res}{col 17} .3461538{col 28} .0933009{col 58} .1632875{col 70} .5290202
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17}-.0975453{col 28} .0936716{col 58}-.2811383{col 70} .0860476
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0852771{col 38}   -1.14{col 49}0.253
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduSCIND{txt}) - prop({res}HinduSCNE{txt})                 z = {res} -1.1439
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.1263         {txt}Pr(|Z| > |z|) = {res}0.2527          {txt}Pr(Z > z) = {res}0.8737
+
+{com}. 
+. 
+. 
+. *****for hindu ST****
+
+. 
+. recode rcaste (4=1) (else = 0), gen(HinduSTIND)
+{txt}(40018 differences between rcaste and HinduSTIND)
+
+{com}. 
+. recode rcaste (4=1)(else = 0) if (STATEID == 11 | STATEID == 12 | STATEID == 13 | STATEID == 14 | STATEID == 15 | STATEID == 16 | STATEID == 17 | STATEID == 18) , gen (HinduSTNE)
+{txt}(1536 differences between rcaste and HinduSTNE)
+
+{com}. 
+. prtest HinduSTIND == HinduSTNE
+
+{txt}Two-sample test of proportions            {res}HinduSTIND{txt}: Number of obs = {res}   40018
+                                           HinduSTNE{txt}: Number of obs = {res}    1536
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 3}HinduSTIND{col 14}{c |}{res}{col 17} .0864861{col 28} .0014051{col 58} .0837322{col 70}   .08924
+   {txt}HinduSTNE {c |}{res}{col 17} .3268229{col 28} .0119681{col 58} .3033659{col 70}   .35028
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17}-.2403368{col 28} .0120503{col 58} -.263955{col 70}-.2167187
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28}  .007637{col 38}  -31.47{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduSTIND{txt}) - prop({res}HinduSTNE{txt})                 z = {res}-31.4700
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.0000         {txt}Pr(|Z| > |z|) = {res}0.0000          {txt}Pr(Z > z) = {res}1.0000
+
+{com}. 
+. **rural/urban
+
+. 
+. bysort URBAN: prtest HinduSTIND == HinduSTNE
+
+{txt}{hline}
+-> URBAN = rural 0
+
+Two-sample test of proportions            {res}HinduSTIND{txt}: Number of obs = {res}   27308
+                                           HinduSTNE{txt}: Number of obs = {res}    1038
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 3}HinduSTIND{col 14}{c |}{res}{col 17} .1109931{col 28} .0019009{col 58} .1072675{col 70} .1147188
+   {txt}HinduSTNE {c |}{res}{col 17} .3882466{col 28} .0151267{col 58} .3585989{col 70} .4178944
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17}-.2772535{col 28} .0152456{col 58}-.3071344{col 70}-.2473726
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0103185{col 38}  -26.87{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduSTIND{txt}) - prop({res}HinduSTNE{txt})                 z = {res}-26.8697
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.0000         {txt}Pr(|Z| > |z|) = {res}0.0000          {txt}Pr(Z > z) = {res}1.0000
+
+{txt}{hline}
+-> URBAN = urban 1
+
+Two-sample test of proportions            {res}HinduSTIND{txt}: Number of obs = {res}   12710
+                                           HinduSTNE{txt}: Number of obs = {res}     498
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 3}HinduSTIND{col 14}{c |}{res}{col 17} .0338316{col 28} .0016037{col 58} .0306885{col 70} .0369748
+   {txt}HinduSTNE {c |}{res}{col 17} .1987952{col 28} .0178838{col 58} .1637436{col 70} .2338468
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17}-.1649636{col 28} .0179556{col 58}-.2001558{col 70}-.1297713
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28}  .008957{col 38}  -18.42{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduSTIND{txt}) - prop({res}HinduSTNE{txt})                 z = {res}-18.4172
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.0000         {txt}Pr(|Z| > |z|) = {res}0.0000          {txt}Pr(Z > z) = {res}1.0000
+
+{com}. 
+. bysort URBAN: prtest HinduSTIND == HinduSTNE if (XPOOR1==1)
+
+{txt}{hline}
+-> URBAN = rural 0
+
+Two-sample test of proportions            {res}HinduSTIND{txt}: Number of obs = {res}    6379
+                                           HinduSTNE{txt}: Number of obs = {res}     217
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 3}HinduSTIND{col 14}{c |}{res}{col 17} .2260542{col 28}  .005237{col 58} .2157898{col 70} .2363186
+   {txt}HinduSTNE {c |}{res}{col 17} .3133641{col 28} .0314889{col 58} .2516469{col 70} .3750812
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17}-.0873098{col 28} .0319215{col 58}-.1498747{col 70}-.0247449
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0290021{col 38}   -3.01{col 49}0.003
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduSTIND{txt}) - prop({res}HinduSTNE{txt})                 z = {res} -3.0105
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.0013         {txt}Pr(|Z| > |z|) = {res}0.0026          {txt}Pr(Z > z) = {res}0.9987
+
+{txt}{hline}
+-> URBAN = urban 1
+
+Two-sample test of proportions            {res}HinduSTIND{txt}: Number of obs = {res}    2695
+                                           HinduSTNE{txt}: Number of obs = {res}      26
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 3}HinduSTIND{col 14}{c |}{res}{col 17} .0367347{col 28} .0036235{col 58} .0296327{col 70} .0438367
+   {txt}HinduSTNE {c |}{res}{col 17} .0384615{col 28} .0377146{col 58}-.0354578{col 70} .1123809
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17}-.0017268{col 28} .0378883{col 58}-.0759866{col 70} .0725329
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0370769{col 38}   -0.05{col 49}0.963
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}HinduSTIND{txt}) - prop({res}HinduSTNE{txt})                 z = {res} -0.0466
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.4814         {txt}Pr(|Z| > |z|) = {res}0.9629          {txt}Pr(Z > z) = {res}0.5186
+
+{com}. 
+. 
+. 
+. *****for Muslims*****
+
+. 
+. recode rcaste (5=1) (else = 0), gen(MUSLIMSIND)
+{txt}(40018 differences between rcaste and MUSLIMSIND)
+
+{com}. 
+. recode rcaste (5=1)(else = 0) if (STATEID == 11 | STATEID == 12 | STATEID == 13 | STATEID == 14 | STATEID == 15 | STATEID == 16 | STATEID == 17 | STATEID == 18) , gen (MUSLIMSNE)
+{txt}(1536 differences between rcaste and MUSLIMSNE)
+
+{com}. 
+. prtest MUSLIMSIND == MUSLIMSNE
+
+{txt}Two-sample test of proportions            {res}MUSLIMSIND{txt}: Number of obs = {res}   40018
+                                           MUSLIMSNE{txt}: Number of obs = {res}    1536
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 3}MUSLIMSIND{col 14}{c |}{res}{col 17} .1139737{col 28} .0015885{col 58} .1108602{col 70} .1170872
+   {txt}MUSLIMSNE {c |}{res}{col 17} .1744792{col 28} .0096837{col 58} .1554995{col 70} .1934588
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17}-.0605055{col 28} .0098131{col 58}-.0797388{col 70}-.0412721
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0083326{col 38}   -7.26{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}MUSLIMSIND{txt}) - prop({res}MUSLIMSNE{txt})                 z = {res} -7.2613
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.0000         {txt}Pr(|Z| > |z|) = {res}0.0000          {txt}Pr(Z > z) = {res}1.0000
+
+{com}. 
+. **rural/urban
+
+. 
+. bysort URBAN: prtest MUSLIMSIND == MUSLIMSNE
+
+{txt}{hline}
+-> URBAN = rural 0
+
+Two-sample test of proportions            {res}MUSLIMSIND{txt}: Number of obs = {res}   27308
+                                           MUSLIMSNE{txt}: Number of obs = {res}    1038
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 3}MUSLIMSIND{col 14}{c |}{res}{col 17} .0926102{col 28} .0017542{col 58}  .089172{col 70} .0960484
+   {txt}MUSLIMSNE {c |}{res}{col 17} .2157996{col 28} .0127685{col 58} .1907738{col 70} .2408254
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17}-.1231894{col 28} .0128884{col 58}-.1484503{col 70}-.0979285
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0093643{col 38}  -13.16{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}MUSLIMSIND{txt}) - prop({res}MUSLIMSNE{txt})                 z = {res}-13.1553
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.0000         {txt}Pr(|Z| > |z|) = {res}0.0000          {txt}Pr(Z > z) = {res}1.0000
+
+{txt}{hline}
+-> URBAN = urban 1
+
+Two-sample test of proportions            {res}MUSLIMSIND{txt}: Number of obs = {res}   12710
+                                           MUSLIMSNE{txt}: Number of obs = {res}     498
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 3}MUSLIMSIND{col 14}{c |}{res}{col 17} .1598741{col 28} .0032508{col 58} .1535027{col 70} .1662455
+   {txt}MUSLIMSNE {c |}{res}{col 17} .0883534{col 28} .0127177{col 58} .0634271{col 70} .1132797
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17} .0715207{col 28} .0131266{col 58}  .045793{col 70} .0972484
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0166262{col 38}    4.30{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}MUSLIMSIND{txt}) - prop({res}MUSLIMSNE{txt})                 z = {res}  4.3017
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}1.0000         {txt}Pr(|Z| > |z|) = {res}0.0000          {txt}Pr(Z > z) = {res}0.0000
+
+{com}. 
+. bysort URBAN: prtest MUSLIMSIND == MUSLIMSNE if (XPOOR1==1)
+
+{txt}{hline}
+-> URBAN = rural 0
+
+Two-sample test of proportions            {res}MUSLIMSIND{txt}: Number of obs = {res}    6379
+                                           MUSLIMSNE{txt}: Number of obs = {res}     217
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 3}MUSLIMSIND{col 14}{c |}{res}{col 17} .0956263{col 28}  .003682{col 58} .0884096{col 70} .1028429
+   {txt}MUSLIMSNE {c |}{res}{col 17} .5345622{col 28}  .033861{col 58} .4681958{col 70} .6009286
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17}-.4389359{col 28} .0340606{col 58}-.5056935{col 70}-.3721783
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0216043{col 38}  -20.32{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}MUSLIMSIND{txt}) - prop({res}MUSLIMSNE{txt})                 z = {res}-20.3170
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.0000         {txt}Pr(|Z| > |z|) = {res}0.0000          {txt}Pr(Z > z) = {res}1.0000
+
+{txt}{hline}
+-> URBAN = urban 1
+
+Two-sample test of proportions            {res}MUSLIMSIND{txt}: Number of obs = {res}    2695
+                                           MUSLIMSNE{txt}: Number of obs = {res}      26
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 3}MUSLIMSIND{col 14}{c |}{res}{col 17} .2586271{col 28} .0084348{col 58} .2420951{col 70}  .275159
+   {txt}MUSLIMSNE {c |}{res}{col 17} .2307692{col 28} .0826286{col 58} .0688201{col 70} .3927184
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17} .0278579{col 28}  .083058{col 58}-.1349329{col 70} .1906486
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0862597{col 38}    0.32{col 49}0.747
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}MUSLIMSIND{txt}) - prop({res}MUSLIMSNE{txt})                 z = {res}  0.3230
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.6266         {txt}Pr(|Z| > |z|) = {res}0.7467          {txt}Pr(Z > z) = {res}0.3734
+
+{com}. 
+. 
+. 
+. *******for Others*****
+
+. 
+. recode rcaste (6=1) (else = 0), gen(OTHERSIND)
+{txt}(40018 differences between rcaste and OTHERSIND)
+
+{com}. 
+. recode rcaste (6=1)(else = 0) if (STATEID == 11 | STATEID == 12 | STATEID == 13 | STATEID == 14 | STATEID == 15 | STATEID == 16 | STATEID == 17 | STATEID == 18) , gen (OTHERSNE)
+{txt}(1536 differences between rcaste and OTHERSNE)
+
+{com}. 
+. prtest OTHERSIND == OTHERSNE
+
+{txt}Two-sample test of proportions             {res}OTHERSIND{txt}: Number of obs = {res}   40018
+                                            OTHERSNE{txt}: Number of obs = {res}    1536
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 4}OTHERSIND{col 14}{c |}{res}{col 17} .0285372{col 28} .0008323{col 58} .0269058{col 70} .0301685
+    {txt}OTHERSNE {c |}{res}{col 17} .0026042{col 28} .0013004{col 58} .0000555{col 70} .0051529
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17}  .025933{col 28} .0015439{col 58} .0229069{col 70} .0289591
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0042579{col 38}    6.09{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}OTHERSIND{txt}) - prop({res}OTHERSNE{txt})                   z = {res}  6.0905
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}1.0000         {txt}Pr(|Z| > |z|) = {res}0.0000          {txt}Pr(Z > z) = {res}0.0000
+
+{com}. 
+. **rural/urban
+
+. 
+. bysort URBAN: prtest OTHERSIND == OTHERSNE
+
+{txt}{hline}
+-> URBAN = rural 0
+
+Two-sample test of proportions             {res}OTHERSIND{txt}: Number of obs = {res}   27308
+                                            OTHERSNE{txt}: Number of obs = {res}    1038
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 4}OTHERSIND{col 14}{c |}{res}{col 17} .0240589{col 28} .0009273{col 58} .0222415{col 70} .0258763
+    {txt}OTHERSNE {c |}{res}{col 17} .0009634{col 28} .0009629{col 58}-.0009239{col 70} .0028507
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17} .0230955{col 28} .0013368{col 58} .0204754{col 70} .0257156
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0047618{col 38}    4.85{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}OTHERSIND{txt}) - prop({res}OTHERSNE{txt})                   z = {res}  4.8502
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}1.0000         {txt}Pr(|Z| > |z|) = {res}0.0000          {txt}Pr(Z > z) = {res}0.0000
+
+{txt}{hline}
+-> URBAN = urban 1
+
+Two-sample test of proportions             {res}OTHERSIND{txt}: Number of obs = {res}   12710
+                                            OTHERSNE{txt}: Number of obs = {res}     498
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 4}OTHERSIND{col 14}{c |}{res}{col 17} .0381589{col 28} .0016993{col 58} .0348283{col 70} .0414895
+    {txt}OTHERSNE {c |}{res}{col 17} .0060241{col 28} .0034675{col 58}-.0007721{col 70} .0128203
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17} .0321348{col 28} .0038615{col 58} .0245664{col 70} .0397033
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0086168{col 38}    3.73{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}OTHERSIND{txt}) - prop({res}OTHERSNE{txt})                   z = {res}  3.7293
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.9999         {txt}Pr(|Z| > |z|) = {res}0.0002          {txt}Pr(Z > z) = {res}0.0001
+
+{com}. 
+. bysort URBAN: prtest OTHERSIND == OTHERSNE if (XPOOR1==1)
+
+{txt}{hline}
+-> URBAN = rural 0
+
+Two-sample test of proportions             {res}OTHERSIND{txt}: Number of obs = {res}    6379
+                                            OTHERSNE{txt}: Number of obs = {res}     217
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 4}OTHERSIND{col 14}{c |}{res}{col 17} .0048597{col 28} .0008707{col 58} .0031531{col 70} .0065662
+    {txt}OTHERSNE {c |}{res}{col 17}        0{col 28}        0{col 58}        0{col 70}        0
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17} .0048597{col 28} .0008707{col 58} .0031531{col 70} .0065662
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0047212{col 38}    1.03{col 49}0.303
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}OTHERSIND{txt}) - prop({res}OTHERSNE{txt})                   z = {res}  1.0293
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.8483         {txt}Pr(|Z| > |z|) = {res}0.3033          {txt}Pr(Z > z) = {res}0.1517
+
+{txt}{hline}
+-> URBAN = urban 1
+
+Two-sample test of proportions             {res}OTHERSIND{txt}: Number of obs = {res}    2695
+                                            OTHERSNE{txt}: Number of obs = {res}      26
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 4}OTHERSIND{col 14}{c |}{res}{col 17} .0189239{col 28} .0026247{col 58} .0137796{col 70} .0240682
+    {txt}OTHERSNE {c |}{res}{col 17}        0{col 28}        0{col 58}        0{col 70}        0
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17} .0189239{col 28} .0026247{col 58} .0137796{col 70} .0240682
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0267245{col 38}    0.71{col 49}0.479
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}OTHERSIND{txt}) - prop({res}OTHERSNE{txt})                   z = {res}  0.7081
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.7606         {txt}Pr(|Z| > |z|) = {res}0.4789          {txt}Pr(Z > z) = {res}0.2394
+
+{com}. 
+. *----------------------------------------------------------------
+
+. **Assignment B
+
+. **Class wise Asset Transition 
+
+. 
+. gen asset_transition=1 if (XASSETS5==1) & (ASSETS5==2|ASSETS5==3|ASSETS5==4|ASSETS5==5)
+{txt}(37,486 missing values generated)
+
+{com}. 
+. replace asset_transition=1 if (XASSETS5==2) & (ASSETS5==3|ASSETS5==4|ASSETS5==5)
+{txt}(2,372 real changes made)
+
+{com}. 
+. replace asset_transition=1 if (XASSETS5==3) & (ASSETS5==4|ASSETS5==5)
+{txt}(2,155 real changes made)
+
+{com}. 
+. replace asset_transition=1 if (XASSETS5==4) & (ASSETS5==5)
+{txt}(1,868 real changes made)
+
+{com}. 
+. 
+. 
+. replace asset_transition=2 if (XASSETS5==5) & (ASSETS5==1|ASSETS5==2|ASSETS5==3|ASSETS5==4)
+{txt}(2,602 real changes made)
+
+{com}. 
+. replace asset_transition=2 if (XASSETS5==4) & (ASSETS5==1|ASSETS5==2|ASSETS5==3)
+{txt}(3,456 real changes made)
+
+{com}. 
+. replace asset_transition=2 if (XASSETS5==3) & (ASSETS5==1|ASSETS5==2)
+{txt}(2,984 real changes made)
+
+{com}. 
+. replace asset_transition=2 if (XASSETS5==2) & (ASSETS5==1)
+{txt}(2,459 real changes made)
+
+{com}. 
+. 
+. 
+. replace asset_transition=3 if (XASSETS5==1) & (ASSETS5==1)
+{txt}(4,205 real changes made)
+
+{com}. 
+. replace asset_transition=3 if (XASSETS5==2) & (ASSETS5==2)
+{txt}(2,489 real changes made)
+
+{com}. 
+. replace asset_transition=3 if (XASSETS5==3) & (ASSETS5==3)
+{txt}(3,814 real changes made)
+
+{com}. 
+. replace asset_transition=3 if (XASSETS5==4) & (ASSETS5==4)
+{txt}(3,567 real changes made)
+
+{com}. 
+. replace asset_transition=3 if (XASSETS5==5) & (ASSETS5==5)
+{txt}(5,493 real changes made)
+
+{com}. 
+. label define asset_transition 3"No Asset Transition" 1"Increase in Assets" 2"Decline in Assets",modify
+
+. 
+. label value asset_transition asset_transition
+
+. 
+. label variable asset_transition "3 category Asset Transition"
+
+. 
+. ***Asset transitions
+
+. 
+. tab asset_transition if (STATEID== 11|STATEID== 12|STATEID== 13|STATEID== 14|STATEID== 15|STATEID== 16|STATEID== 17|STATEID== 18)
+
+   {txt}3 category Asset {c |}
+         Transition {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+ Increase in Assets {c |}{res}        415       27.09       27.09
+{txt}  Decline in Assets {c |}{res}        471       30.74       57.83
+{txt}No Asset Transition {c |}{res}        646       42.17      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}      1,532      100.00
+
+{com}. 
+. tab asset_transition
+
+   {txt}3 category Asset {c |}
+         Transition {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+ Increase in Assets {c |}{res}      8,927       22.32       22.32
+{txt}  Decline in Assets {c |}{res}     11,501       28.76       51.08
+{txt}No Asset Transition {c |}{res}     19,568       48.92      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}     39,996      100.00
+
+{com}. 
+. ****Mapping Asset transition socio-religious groupwise: NE
+
+. 
+. bysort rcaste: tab asset_transition if (STATEID== 11|STATEID== 12|STATEID== 13|STATEID== 14|STATEID== 15|STATEID== 16|STATEID== 17|STATEID== 18)
+
+{txt}{hline}
+-> rcaste = Hindu Forward Caste
+
+   3 category Asset {c |}
+         Transition {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+ Increase in Assets {c |}{res}         90       25.28       25.28
+{txt}  Decline in Assets {c |}{res}        107       30.06       55.34
+{txt}No Asset Transition {c |}{res}        159       44.66      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}        356      100.00
+
+{txt}{hline}
+-> rcaste = Hindu OBC
+
+   3 category Asset {c |}
+         Transition {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+ Increase in Assets {c |}{res}         57       24.57       24.57
+{txt}  Decline in Assets {c |}{res}         69       29.74       54.31
+{txt}No Asset Transition {c |}{res}        106       45.69      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}        232      100.00
+
+{txt}{hline}
+-> rcaste = Hindu SC
+
+   3 category Asset {c |}
+         Transition {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+ Increase in Assets {c |}{res}         50       29.76       29.76
+{txt}  Decline in Assets {c |}{res}         40       23.81       53.57
+{txt}No Asset Transition {c |}{res}         78       46.43      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}        168      100.00
+
+{txt}{hline}
+-> rcaste = Hindu ST
+
+   3 category Asset {c |}
+         Transition {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+ Increase in Assets {c |}{res}        163       32.60       32.60
+{txt}  Decline in Assets {c |}{res}        143       28.60       61.20
+{txt}No Asset Transition {c |}{res}        194       38.80      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}        500      100.00
+
+{txt}{hline}
+-> rcaste = Muslims
+
+   3 category Asset {c |}
+         Transition {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+ Increase in Assets {c |}{res}         53       19.85       19.85
+{txt}  Decline in Assets {c |}{res}        112       41.95       61.80
+{txt}No Asset Transition {c |}{res}        102       38.20      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}        267      100.00
+
+{txt}{hline}
+-> rcaste = Others
+
+   3 category Asset {c |}
+         Transition {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+No Asset Transition {c |}{res}          4      100.00      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}          4      100.00
+
+{txt}{hline}
+-> rcaste = .
+
+   3 category Asset {c |}
+         Transition {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+ Increase in Assets {c |}{res}          2       40.00       40.00
+{txt}No Asset Transition {c |}{res}          3       60.00      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}          5      100.00
+
+
+{com}. 
+. ****Mapping Asset transition socio-religious groupwise: All India
+
+. 
+. bysort rcaste: tab asset_transition
+
+{txt}{hline}
+-> rcaste = Hindu Forward Caste
+
+   3 category Asset {c |}
+         Transition {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+ Increase in Assets {c |}{res}      1,660       19.24       19.24
+{txt}  Decline in Assets {c |}{res}      2,464       28.55       47.79
+{txt}No Asset Transition {c |}{res}      4,505       52.21      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}      8,629      100.00
+
+{txt}{hline}
+-> rcaste = Hindu OBC
+
+   3 category Asset {c |}
+         Transition {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+ Increase in Assets {c |}{res}      3,157       23.19       23.19
+{txt}  Decline in Assets {c |}{res}      3,991       29.32       52.51
+{txt}No Asset Transition {c |}{res}      6,465       47.49      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}     13,613      100.00
+
+{txt}{hline}
+-> rcaste = Hindu SC
+
+   3 category Asset {c |}
+         Transition {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+ Increase in Assets {c |}{res}      2,037       23.75       23.75
+{txt}  Decline in Assets {c |}{res}      2,501       29.16       52.90
+{txt}No Asset Transition {c |}{res}      4,040       47.10      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}      8,578      100.00
+
+{txt}{hline}
+-> rcaste = Hindu ST
+
+   3 category Asset {c |}
+         Transition {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+ Increase in Assets {c |}{res}        825       23.86       23.86
+{txt}  Decline in Assets {c |}{res}        854       24.70       48.57
+{txt}No Asset Transition {c |}{res}      1,778       51.43      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}      3,457      100.00
+
+{txt}{hline}
+-> rcaste = Muslims
+
+   3 category Asset {c |}
+         Transition {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+ Increase in Assets {c |}{res}      1,051       23.06       23.06
+{txt}  Decline in Assets {c |}{res}      1,486       32.61       55.67
+{txt}No Asset Transition {c |}{res}      2,020       44.33      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}      4,557      100.00
+
+{txt}{hline}
+-> rcaste = Others
+
+   3 category Asset {c |}
+         Transition {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+ Increase in Assets {c |}{res}        194       16.99       16.99
+{txt}  Decline in Assets {c |}{res}        201       17.60       34.59
+{txt}No Asset Transition {c |}{res}        747       65.41      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}      1,142      100.00
+
+{txt}{hline}
+-> rcaste = .
+
+   3 category Asset {c |}
+         Transition {c |}      Freq.     Percent        Cum.
+{hline 20}{c +}{hline 35}
+ Increase in Assets {c |}{res}          3       15.00       15.00
+{txt}  Decline in Assets {c |}{res}          4       20.00       35.00
+{txt}No Asset Transition {c |}{res}         13       65.00      100.00
+{txt}{hline 20}{c +}{hline 35}
+              Total {c |}{res}         20      100.00
+
+
+{com}. **B:Q3
+
+. *****Linking asset and poverty transition
+
+. 
+. tab asset_transition pov_transition if (STATEID== 11|STATEID== 12|STATEID== 13|STATEID== 14|STATEID== 15|STATEID== 16|STATEID== 17|STATEID== 18),col chi2
+{txt}
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+   3 category Asset {c |}        4 category Poverty Transition
+         Transition {c |} Poor stay  Non-poor   Poor move  Non-poor  {c |}     Total
+{hline 20}{c +}{hline 44}{c +}{hline 10}
+ Increase in Assets {c |}{res}        20        312         57         24 {txt}{c |}{res}       413 
+                    {txt}{c |}{res}     29.41      27.59      32.76      15.29 {txt}{c |}{res}     26.99 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+  Decline in Assets {c |}{res}        21        315         56         79 {txt}{c |}{res}       471 
+                    {txt}{c |}{res}     30.88      27.85      32.18      50.32 {txt}{c |}{res}     30.78 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+No Asset Transition {c |}{res}        27        504         61         54 {txt}{c |}{res}       646 
+                    {txt}{c |}{res}     39.71      44.56      35.06      34.39 {txt}{c |}{res}     42.22 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+              Total {c |}{res}        68      1,131        174        157 {txt}{c |}{res}     1,530 
+                    {txt}{c |}{res}    100.00     100.00     100.00     100.00 {txt}{c |}{res}    100.00 
+
+{txt}          Pearson chi2({res}6{txt}) = {res} 39.1025  {txt} Pr = {res}0.000
+
+{com}. 
+. ****Linking asset and poverty transition: National Numbers
+
+. 
+. tab asset_transition pov_transition, col chi2
+{txt}
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+   3 category Asset {c |}        4 category Poverty Transition
+         Transition {c |} Poor stay  Non-poor   Poor move  Non-poor  {c |}     Total
+{hline 20}{c +}{hline 44}{c +}{hline 10}
+ Increase in Assets {c |}{res}       546      5,977      1,762        614 {txt}{c |}{res}     8,899 
+                    {txt}{c |}{res}     18.48      22.04      28.82      16.35 {txt}{c |}{res}     22.28 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+  Decline in Assets {c |}{res}       771      7,661      1,593      1,466 {txt}{c |}{res}    11,491 
+                    {txt}{c |}{res}     26.10      28.26      26.06      39.03 {txt}{c |}{res}     28.77 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+No Asset Transition {c |}{res}     1,637     13,475      2,758      1,676 {txt}{c |}{res}    19,546 
+                    {txt}{c |}{res}     55.42      49.70      45.12      44.62 {txt}{c |}{res}     48.94 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+              Total {c |}{res}     2,954     27,113      6,113      3,756 {txt}{c |}{res}    39,936 
+                    {txt}{c |}{res}    100.00     100.00     100.00     100.00 {txt}{c |}{res}    100.00 
+
+{txt}          Pearson chi2({res}6{txt}) = {res}420.5151  {txt} Pr = {res}0.000
+
+{com}. 
+. *****Linking asset and poverty transition Socio religious groupwise
+
+. 
+. bysort rcaste: tab asset_transition pov_transition if (STATEID== 11|STATEID== 12|STATEID== 13|STATEID== 14|STATEID== 15|STATEID== 16|STATEID== 17|STATEID== 18),col chi2
+
+{txt}{hline}
+-> rcaste = Hindu Forward Caste
+
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+   3 category Asset {c |}        4 category Poverty Transition
+         Transition {c |} Poor stay  Non-poor   Poor move  Non-poor  {c |}     Total
+{hline 20}{c +}{hline 44}{c +}{hline 10}
+ Increase in Assets {c |}{res}         0         79          8          2 {txt}{c |}{res}        89 
+                    {txt}{c |}{res}      0.00      24.46      53.33      12.50 {txt}{c |}{res}     25.07 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+  Decline in Assets {c |}{res}         1         95          3          8 {txt}{c |}{res}       107 
+                    {txt}{c |}{res}    100.00      29.41      20.00      50.00 {txt}{c |}{res}     30.14 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+No Asset Transition {c |}{res}         0        149          4          6 {txt}{c |}{res}       159 
+                    {txt}{c |}{res}      0.00      46.13      26.67      37.50 {txt}{c |}{res}     44.79 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+              Total {c |}{res}         1        323         15         16 {txt}{c |}{res}       355 
+                    {txt}{c |}{res}    100.00     100.00     100.00     100.00 {txt}{c |}{res}    100.00 
+
+{txt}          Pearson chi2({res}6{txt}) = {res} 12.2355  {txt} Pr = {res}0.057
+
+{txt}{hline}
+-> rcaste = Hindu OBC
+
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+   3 category Asset {c |}        4 category Poverty Transition
+         Transition {c |} Poor stay  Non-poor   Poor move  Non-poor  {c |}     Total
+{hline 20}{c +}{hline 44}{c +}{hline 10}
+ Increase in Assets {c |}{res}         1         46          6          3 {txt}{c |}{res}        56 
+                    {txt}{c |}{res}    100.00      22.77      46.15      20.00 {txt}{c |}{res}     24.24 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+  Decline in Assets {c |}{res}         0         61          1          7 {txt}{c |}{res}        69 
+                    {txt}{c |}{res}      0.00      30.20       7.69      46.67 {txt}{c |}{res}     29.87 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+No Asset Transition {c |}{res}         0         95          6          5 {txt}{c |}{res}       106 
+                    {txt}{c |}{res}      0.00      47.03      46.15      33.33 {txt}{c |}{res}     45.89 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+              Total {c |}{res}         1        202         13         15 {txt}{c |}{res}       231 
+                    {txt}{c |}{res}    100.00     100.00     100.00     100.00 {txt}{c |}{res}    100.00 
+
+{txt}          Pearson chi2({res}6{txt}) = {res} 10.1285  {txt} Pr = {res}0.119
+
+{txt}{hline}
+-> rcaste = Hindu SC
+
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+   3 category Asset {c |}        4 category Poverty Transition
+         Transition {c |} Poor stay  Non-poor   Poor move  Non-poor  {c |}     Total
+{hline 20}{c +}{hline 44}{c +}{hline 10}
+ Increase in Assets {c |}{res}         1         39          6          4 {txt}{c |}{res}        50 
+                    {txt}{c |}{res}     33.33      29.10      31.58      33.33 {txt}{c |}{res}     29.76 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+  Decline in Assets {c |}{res}         0         34          3          3 {txt}{c |}{res}        40 
+                    {txt}{c |}{res}      0.00      25.37      15.79      25.00 {txt}{c |}{res}     23.81 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+No Asset Transition {c |}{res}         2         61         10          5 {txt}{c |}{res}        78 
+                    {txt}{c |}{res}     66.67      45.52      52.63      41.67 {txt}{c |}{res}     46.43 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+              Total {c |}{res}         3        134         19         12 {txt}{c |}{res}       168 
+                    {txt}{c |}{res}    100.00     100.00     100.00     100.00 {txt}{c |}{res}    100.00 
+
+{txt}          Pearson chi2({res}6{txt}) = {res}  1.9816  {txt} Pr = {res}0.921
+
+{txt}{hline}
+-> rcaste = Hindu ST
+
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+   3 category Asset {c |}        4 category Poverty Transition
+         Transition {c |} Poor stay  Non-poor   Poor move  Non-poor  {c |}     Total
+{hline 20}{c +}{hline 44}{c +}{hline 10}
+ Increase in Assets {c |}{res}        10        123         20         10 {txt}{c |}{res}       163 
+                    {txt}{c |}{res}     55.56      33.70      40.00      14.93 {txt}{c |}{res}     32.60 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+  Decline in Assets {c |}{res}         3         88         17         35 {txt}{c |}{res}       143 
+                    {txt}{c |}{res}     16.67      24.11      34.00      52.24 {txt}{c |}{res}     28.60 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+No Asset Transition {c |}{res}         5        154         13         22 {txt}{c |}{res}       194 
+                    {txt}{c |}{res}     27.78      42.19      26.00      32.84 {txt}{c |}{res}     38.80 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+              Total {c |}{res}        18        365         50         67 {txt}{c |}{res}       500 
+                    {txt}{c |}{res}    100.00     100.00     100.00     100.00 {txt}{c |}{res}    100.00 
+
+{txt}          Pearson chi2({res}6{txt}) = {res} 31.7464  {txt} Pr = {res}0.000
+
+{txt}{hline}
+-> rcaste = Muslims
+
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+   3 category Asset {c |}        4 category Poverty Transition
+         Transition {c |} Poor stay  Non-poor   Poor move  Non-poor  {c |}     Total
+{hline 20}{c +}{hline 44}{c +}{hline 10}
+ Increase in Assets {c |}{res}         8         23         17          5 {txt}{c |}{res}        53 
+                    {txt}{c |}{res}     17.78      23.23      22.08      10.87 {txt}{c |}{res}     19.85 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+  Decline in Assets {c |}{res}        17         37         32         26 {txt}{c |}{res}       112 
+                    {txt}{c |}{res}     37.78      37.37      41.56      56.52 {txt}{c |}{res}     41.95 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+No Asset Transition {c |}{res}        20         39         28         15 {txt}{c |}{res}       102 
+                    {txt}{c |}{res}     44.44      39.39      36.36      32.61 {txt}{c |}{res}     38.20 
+{txt}{hline 20}{c +}{hline 44}{c +}{hline 10}
+              Total {c |}{res}        45         99         77         46 {txt}{c |}{res}       267 
+                    {txt}{c |}{res}    100.00     100.00     100.00     100.00 {txt}{c |}{res}    100.00 
+
+{txt}          Pearson chi2({res}6{txt}) = {res}  6.6823  {txt} Pr = {res}0.351
+
+{txt}{hline}
+-> rcaste = Others
+
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+                    {c |}  4 category Poverty
+   3 category Asset {c |}      Transition
+         Transition {c |} Non-poor   Non-poor  {c |}     Total
+{hline 20}{c +}{hline 22}{c +}{hline 10}
+No Asset Transition {c |}{res}         3          1 {txt}{c |}{res}         4 
+                    {txt}{c |}{res}    100.00     100.00 {txt}{c |}{res}    100.00 
+{txt}{hline 20}{c +}{hline 22}{c +}{hline 10}
+              Total {c |}{res}         3          1 {txt}{c |}{res}         4 
+                    {txt}{c |}{res}    100.00     100.00 {txt}{c |}{res}    100.00 
+
+
+{txt}{hline}
+-> rcaste = .
+
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+                    {c |} 4 category
+                    {c |}  Poverty
+   3 category Asset {c |} Transition
+         Transition {c |} Non-poor  {c |}     Total
+{hline 20}{c +}{hline 11}{c +}{hline 10}
+ Increase in Assets {c |}{res}         2 {txt}{c |}{res}         2 
+                    {txt}{c |}{res}     40.00 {txt}{c |}{res}     40.00 
+{txt}{hline 20}{c +}{hline 11}{c +}{hline 10}
+No Asset Transition {c |}{res}         3 {txt}{c |}{res}         3 
+                    {txt}{c |}{res}     60.00 {txt}{c |}{res}     60.00 
+{txt}{hline 20}{c +}{hline 11}{c +}{hline 10}
+              Total {c |}{res}         5 {txt}{c |}{res}         5 
+                    {txt}{c |}{res}    100.00 {txt}{c |}{res}    100.00 
+
+
+
+{com}. **B: Q4
+
+. 
+. *****pr tests for Asset Transitions
+
+. 
+. **increase
+
+. 
+. recode asset_transition (1=1) (else=0), gen(incassetINDIA)
+{txt}(31091 differences between asset_transition and incassetINDIA)
+
+{com}. 
+. recode asset_transition (1=1) (else=0) if (STATEID == 11 | STATEID == 12 | STATEID == 13 | STATEID == 14 | STATEID == 15 | STATEID == 16 | STATEID == 17 | STATEID == 18), gen(incassetNE)
+{txt}(1121 differences between asset_transition and incassetNE)
+
+{com}. 
+. 
+. 
+. prtest incassetINDIA==incassetNE
+
+{txt}Two-sample test of proportions          {res}incassetINDI{txt}: Number of obs = {res}   40018
+                                          incassetNE{txt}: Number of obs = {res}    1536
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 1}incassetINDI{col 14}{c |}{res}{col 17} .2230746{col 28} .0020811{col 58} .2189958{col 70} .2271534
+  {txt}incassetNE {c |}{res}{col 17} .2701823{col 28} .0113303{col 58} .2479754{col 70} .2923892
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17}-.0471077{col 28} .0115198{col 58}-.0696861{col 70}-.0245293
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0108542{col 38}   -4.34{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}incassetINDI{txt}) - prop({res}incassetNE{txt})              z = {res} -4.3400
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.0000         {txt}Pr(|Z| > |z|) = {res}0.0000          {txt}Pr(Z > z) = {res}1.0000
+
+{com}. 
+. 
+. 
+. **decrease
+
+. 
+. recode asset_transition (2=1) (else=0), gen(decassetINDIA)
+{txt}(40018 differences between asset_transition and decassetINDIA)
+
+{com}. 
+. recode asset_transition (2=1) (else=0) if (STATEID == 11 | STATEID == 12 | STATEID == 13 | STATEID == 14 | STATEID == 15 | STATEID == 16 | STATEID == 17 | STATEID == 18), gen(decassetNE)
+{txt}(1536 differences between asset_transition and decassetNE)
+
+{com}. 
+. 
+. 
+. prtest decassetINDIA==decassetNE
+
+{txt}Two-sample test of proportions          {res}decassetINDI{txt}: Number of obs = {res}   40018
+                                          decassetNE{txt}: Number of obs = {res}    1536
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 1}decassetINDI{col 14}{c |}{res}{col 17} .2873957{col 28} .0022622{col 58} .2829618{col 70} .2918296
+  {txt}decassetNE {c |}{res}{col 17} .3066406{col 28} .0117652{col 58} .2835813{col 70} .3296999
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17} -.019245{col 28} .0119807{col 58}-.0427267{col 70} .0042368
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0117752{col 38}   -1.63{col 49}0.102
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}decassetINDI{txt}) - prop({res}decassetNE{txt})              z = {res} -1.6344
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}0.0511         {txt}Pr(|Z| > |z|) = {res}0.1022          {txt}Pr(Z > z) = {res}0.9489
+
+{com}. 
+. 
+. 
+. **no transition
+
+. 
+. recode asset_transition (3=1) (else=0), gen(notassetINDIA)
+{txt}(40018 differences between asset_transition and notassetINDIA)
+
+{com}. 
+. recode asset_transition (3=1) (else=0) if (STATEID == 11 | STATEID == 12 | STATEID == 13 | STATEID == 14 | STATEID == 15 | STATEID == 16 | STATEID == 17 | STATEID == 18), gen(notassetNE)
+{txt}(1536 differences between asset_transition and notassetNE)
+
+{com}. 
+. 
+. 
+. prtest notassetINDIA==notassetNE
+
+{txt}Two-sample test of proportions          {res}notassetINDI{txt}: Number of obs = {res}   40018
+                                          notassetNE{txt}: Number of obs = {res}    1536
+{txt}{hline 13}{c TT}{hline 64}
+    Variable {c |}{col 22}Mean{col 29}Std. Err.{col 44}z{col 49}P>|z|{col 59}[95% Conf. Interval]
+{hline 13}{c +}{hline 64}
+{col 1}notassetINDI{col 14}{c |}{res}{col 17}   .48898{col 28} .0024988{col 58} .4840823{col 70} .4938776
+  {txt}notassetNE {c |}{res}{col 17} .4205729{col 28} .0125958{col 58} .3958857{col 70} .4452602
+{txt}{hline 13}{c +}{hline 64}
+        diff {c |}{res}{col 17}  .068407{col 28} .0128412{col 58} .0432387{col 70} .0935754
+{txt}{col 14}{c |}{col 17}under Ho:{res}{col 28} .0129955{col 38}    5.26{col 49}0.000
+{txt}{hline 13}{c BT}{hline 64}
+        diff = prop({res}notassetINDI{txt}) - prop({res}notassetNE{txt})              z = {res}  5.2639
+{txt}    Ho: diff = 0
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(Z < z) = {res}1.0000         {txt}Pr(|Z| > |z|) = {res}0.0000          {txt}Pr(Z > z) = {res}0.0000
+
+{com}. 
+. *---------------------------------------------
+
+. **Assignment C: Q1
+
+. 
+. **social groupwise poverty transition and debt to moneylender 
+
+. 
+. bysort rcaste: tab pov_transition DB1C if (STATEID==11 | STATEID==12 | STATEID==13 | STATEID ==14 | STATEID==15 | STATEID==16 | STATEID==17 | STATEID==18),col chi2
+
+{txt}{hline}
+-> rcaste = Hindu Forward Caste
+
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+                      {c |}   HQ27 16.1c Debt:
+   4 category Poverty {c |} money lender [IHDS2]
+           Transition {c |}      No 0      Yes 1 {c |}     Total
+{hline 22}{c +}{hline 22}{c +}{hline 10}
+      Poor stays Poor {c |}{res}         1          0 {txt}{c |}{res}         1 
+                      {txt}{c |}{res}      0.30       0.00 {txt}{c |}{res}      0.28 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+Non-poor stays Non-po {c |}{res}       302         21 {txt}{c |}{res}       323 
+                      {txt}{c |}{res}     90.42     100.00 {txt}{c |}{res}     90.99 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+Poor moves on to Non- {c |}{res}        15          0 {txt}{c |}{res}        15 
+                      {txt}{c |}{res}      4.49       0.00 {txt}{c |}{res}      4.23 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+Non-poor becomes Poor {c |}{res}        16          0 {txt}{c |}{res}        16 
+                      {txt}{c |}{res}      4.79       0.00 {txt}{c |}{res}      4.51 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+                Total {c |}{res}       334         21 {txt}{c |}{res}       355 
+                      {txt}{c |}{res}    100.00     100.00 {txt}{c |}{res}    100.00 
+
+{txt}          Pearson chi2({res}3{txt}) = {res}  2.2113  {txt} Pr = {res}0.530
+
+{txt}{hline}
+-> rcaste = Hindu OBC
+
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+                      {c |}   HQ27 16.1c Debt:
+   4 category Poverty {c |} money lender [IHDS2]
+           Transition {c |}      No 0      Yes 1 {c |}     Total
+{hline 22}{c +}{hline 22}{c +}{hline 10}
+      Poor stays Poor {c |}{res}         1          0 {txt}{c |}{res}         1 
+                      {txt}{c |}{res}      0.44       0.00 {txt}{c |}{res}      0.43 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+Non-poor stays Non-po {c |}{res}       200          2 {txt}{c |}{res}       202 
+                      {txt}{c |}{res}     87.34     100.00 {txt}{c |}{res}     87.45 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+Poor moves on to Non- {c |}{res}        13          0 {txt}{c |}{res}        13 
+                      {txt}{c |}{res}      5.68       0.00 {txt}{c |}{res}      5.63 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+Non-poor becomes Poor {c |}{res}        15          0 {txt}{c |}{res}        15 
+                      {txt}{c |}{res}      6.55       0.00 {txt}{c |}{res}      6.49 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+                Total {c |}{res}       229          2 {txt}{c |}{res}       231 
+                      {txt}{c |}{res}    100.00     100.00 {txt}{c |}{res}    100.00 
+
+{txt}          Pearson chi2({res}3{txt}) = {res}  0.2896  {txt} Pr = {res}0.962
+
+{txt}{hline}
+-> rcaste = Hindu SC
+
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+                      {c |}   HQ27 16.1c Debt:
+   4 category Poverty {c |} money lender [IHDS2]
+           Transition {c |}      No 0      Yes 1 {c |}     Total
+{hline 22}{c +}{hline 22}{c +}{hline 10}
+      Poor stays Poor {c |}{res}         3          0 {txt}{c |}{res}         3 
+                      {txt}{c |}{res}      1.80       0.00 {txt}{c |}{res}      1.79 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+Non-poor stays Non-po {c |}{res}       133          1 {txt}{c |}{res}       134 
+                      {txt}{c |}{res}     79.64     100.00 {txt}{c |}{res}     79.76 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+Poor moves on to Non- {c |}{res}        19          0 {txt}{c |}{res}        19 
+                      {txt}{c |}{res}     11.38       0.00 {txt}{c |}{res}     11.31 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+Non-poor becomes Poor {c |}{res}        12          0 {txt}{c |}{res}        12 
+                      {txt}{c |}{res}      7.19       0.00 {txt}{c |}{res}      7.14 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+                Total {c |}{res}       167          1 {txt}{c |}{res}       168 
+                      {txt}{c |}{res}    100.00     100.00 {txt}{c |}{res}    100.00 
+
+{txt}          Pearson chi2({res}3{txt}) = {res}  0.2553  {txt} Pr = {res}0.968
+
+{txt}{hline}
+-> rcaste = Hindu ST
+
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+                      {c |}   HQ27 16.1c Debt:
+   4 category Poverty {c |} money lender [IHDS2]
+           Transition {c |}      No 0      Yes 1 {c |}     Total
+{hline 22}{c +}{hline 22}{c +}{hline 10}
+      Poor stays Poor {c |}{res}        18          0 {txt}{c |}{res}        18 
+                      {txt}{c |}{res}      3.61       0.00 {txt}{c |}{res}      3.60 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+Non-poor stays Non-po {c |}{res}       364          1 {txt}{c |}{res}       365 
+                      {txt}{c |}{res}     72.95     100.00 {txt}{c |}{res}     73.00 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+Poor moves on to Non- {c |}{res}        50          0 {txt}{c |}{res}        50 
+                      {txt}{c |}{res}     10.02       0.00 {txt}{c |}{res}     10.00 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+Non-poor becomes Poor {c |}{res}        67          0 {txt}{c |}{res}        67 
+                      {txt}{c |}{res}     13.43       0.00 {txt}{c |}{res}     13.40 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+                Total {c |}{res}       499          1 {txt}{c |}{res}       500 
+                      {txt}{c |}{res}    100.00     100.00 {txt}{c |}{res}    100.00 
+
+{txt}          Pearson chi2({res}3{txt}) = {res}  0.3706  {txt} Pr = {res}0.946
+
+{txt}{hline}
+-> rcaste = Muslims
+
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+                      {c |}   HQ27 16.1c Debt:
+   4 category Poverty {c |} money lender [IHDS2]
+           Transition {c |}      No 0      Yes 1 {c |}     Total
+{hline 22}{c +}{hline 22}{c +}{hline 10}
+      Poor stays Poor {c |}{res}        45          0 {txt}{c |}{res}        45 
+                      {txt}{c |}{res}     16.92       0.00 {txt}{c |}{res}     16.85 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+Non-poor stays Non-po {c |}{res}        99          0 {txt}{c |}{res}        99 
+                      {txt}{c |}{res}     37.22       0.00 {txt}{c |}{res}     37.08 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+Poor moves on to Non- {c |}{res}        76          1 {txt}{c |}{res}        77 
+                      {txt}{c |}{res}     28.57     100.00 {txt}{c |}{res}     28.84 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+Non-poor becomes Poor {c |}{res}        46          0 {txt}{c |}{res}        46 
+                      {txt}{c |}{res}     17.29       0.00 {txt}{c |}{res}     17.23 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+                Total {c |}{res}       266          1 {txt}{c |}{res}       267 
+                      {txt}{c |}{res}    100.00     100.00 {txt}{c |}{res}    100.00 
+
+{txt}          Pearson chi2({res}3{txt}) = {res}  2.4768  {txt} Pr = {res}0.479
+
+{txt}{hline}
+-> rcaste = Others
+
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+                      {c |} HQ27 16.1c
+                      {c |}   Debt:
+                      {c |}   money
+                      {c |}   lender
+   4 category Poverty {c |}  [IHDS2]
+           Transition {c |}      No 0 {c |}     Total
+{hline 22}{c +}{hline 11}{c +}{hline 10}
+Non-poor stays Non-po {c |}{res}         3 {txt}{c |}{res}         3 
+                      {txt}{c |}{res}     75.00 {txt}{c |}{res}     75.00 
+{txt}{hline 22}{c +}{hline 11}{c +}{hline 10}
+Non-poor becomes Poor {c |}{res}         1 {txt}{c |}{res}         1 
+                      {txt}{c |}{res}     25.00 {txt}{c |}{res}     25.00 
+{txt}{hline 22}{c +}{hline 11}{c +}{hline 10}
+                Total {c |}{res}         4 {txt}{c |}{res}         4 
+                      {txt}{c |}{res}    100.00 {txt}{c |}{res}    100.00 
+
+
+{txt}{hline}
+-> rcaste = .
+
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+                      {c |} HQ27 16.1c
+                      {c |}   Debt:
+                      {c |}   money
+                      {c |}   lender
+   4 category Poverty {c |}  [IHDS2]
+           Transition {c |}      No 0 {c |}     Total
+{hline 22}{c +}{hline 11}{c +}{hline 10}
+Non-poor stays Non-po {c |}{res}         5 {txt}{c |}{res}         5 
+                      {txt}{c |}{res}    100.00 {txt}{c |}{res}    100.00 
+{txt}{hline 22}{c +}{hline 11}{c +}{hline 10}
+                Total {c |}{res}         5 {txt}{c |}{res}         5 
+                      {txt}{c |}{res}    100.00 {txt}{c |}{res}    100.00 
+
+
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}E:\PRESI '25\SEC SEM 4\PG\F 1.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 1 May 2024, 20:56:08
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
