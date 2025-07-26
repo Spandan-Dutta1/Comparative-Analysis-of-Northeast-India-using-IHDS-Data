@@ -1,1 +1,2 @@
 # Comparative-Analysis-of-Northeast-India-using-IHDS-Data
+he study analyzes socio-religious composition, poverty, asset, and debt transitions in Northeast India using IHDS data (2004–05, 2011–12), comparing it with all-India trends. It employs chi-square and proportion tests to assess statistical significance. Results show Northeast’s poor are mainly Muslims and Hindu STs. Asset transitions are more favorable in the Northeast. Poverty transition correlates with asset change only for Hindu STs; no significant link found between debt and poverty transition.
